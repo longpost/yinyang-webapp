@@ -16,7 +16,9 @@
       hintBalanced: "不是固定 50/50；平衡是一段动态区间。",
       hintYang: "阳在上升，阴相对下降；继续推高会触发“极则反”。",
       hintYin: "阴在上升，阳相对下降；继续推高会触发“极则反”。",
-      exportOk: "已生成 JSON（可复制保存）："
+      exportOk: "已生成 JSON（可复制保存）：",
+      yinLabel:"阴",
+      yangLabel:"阳"
     },
     en: {
       langName: "English",
@@ -30,7 +32,9 @@
       hintBalanced: "Balance is a dynamic band, not a fixed 50/50 point.",
       hintYang: "Yang rising, Yin relatively falling; pushing to an extreme tends to flip.",
       hintYin: "Yin rising, Yang relatively falling; pushing to an extreme tends to flip.",
-      exportOk: "JSON generated (copy & save):"
+      exportOk: "JSON generated (copy & save):",
+      yinLabel:"Yin",
+      yangLabel:"Yang"
     }
   };
 
@@ -196,6 +200,9 @@
     }
 
     $("#lblRatio").textContent = t("ratio");
+    const ly = $("#lblYang"); const ln = $("#lblYin");
+    if (ly) ly.textContent = t("yangLabel");
+    if (ln) ln.textContent = t("yinLabel");
     const q = $("#q");
     if (q) q.placeholder = (LANG==="zh") ? "搜索：如 阴虚 / 消长 / 真寒假热 ..." : "Search: e.g., Yin deficiency / waxing-waning / true cold false heat ...";
   }
@@ -311,6 +318,14 @@
     const r = $("#ratio");
     const yangPct = Number(r.value);
     $("#ratioVal").textContent = String(yangPct);
+
+    const yinPct = 100 - yangPct;
+    const pctYang = $("#pctYang"); const pctYin = $("#pctYin");
+    if (pctYang) pctYang.textContent = String(yangPct);
+    if (pctYin) pctYin.textContent = String(yinPct);
+    const barYang = $("#barYang"); const barYin = $("#barYin");
+    if (barYang) barYang.style.height = `${yangPct}%`;
+    if (barYin) barYin.style.height = `${yinPct}%`;
 
     // Keep a correct (standard) Taiji and rotate it for interactivity.
     const g = $("#taijiG");
