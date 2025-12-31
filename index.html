@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>阴阳理论 · 互动学习 WebApp</title>
+  <meta name="description" content="阴阳对立统一、互根互用、消长转化、极则反；含分层拆解、四种失衡、转化模拟、真假判断与术语词典。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">☯</div>
+      <div>
+        <div class="title">阴阳理论 · 互动学习</div>
+        <div class="subtitle">动态太极 · 分层拆解 · 失衡判断 · 转化模拟 · 假象训练</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="btnLang" class="chip" title="中英切换">中文</button>
+      <button id="btnHelp" class="chip" title="快捷键 / 使用说明">帮助</button>
+      <a class="chip" href="#about" title="关于与引用">About</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab active" data-view="core">太极核心</button>
+      <button class="tab" data-view="layers">分层拆解</button>
+      <button class="tab" data-view="imbalance">四种失衡</button>
+      <button class="tab" data-view="transform">转化模拟</button>
+      <button class="tab" data-view="illusions">真假判断</button>
+      <button class="tab" data-view="glossary">术语词典</button>
+      <button class="tab" data-view="bridge">联动五行</button>
+    </nav>
+
+    <section id="view-core" class="view active">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>动态太极（可拖动）</h2>
+            <div class="muted">拖动滑块，观察阴阳消长与“极则反”的提示。</div>
+          </div>
+
+          <div class="taiji-wrap">
+            <svg id="taiji" class="taiji" viewBox="0 0 240 240" role="img" aria-label="Taiji diagram">
+              <circle cx="120" cy="120" r="110" class="ring"/>
+              <defs>
+                <clipPath id="clipCircle">
+                  <circle cx="120" cy="120" r="100"></circle>
+                </clipPath>
+              </defs>
+
+              <g clip-path="url(#clipCircle)">
+                <path id="pYang" class="yang" d=""></path>
+                <path id="pYin" class="yin" d=""></path>
+
+                <circle id="dotYinInYang" class="yinDot" cx="120" cy="70" r="12"></circle>
+                <circle id="dotYangInYin" class="yangDot" cx="120" cy="170" r="12"></circle>
+              </g>
+
+              <circle cx="120" cy="120" r="100" class="outline"/>
+            </svg>
+
+            <div class="slider">
+              <label for="ratio" class="label"><span id="lblRatio">阴阳比例</span>：
+                <span class="mono"><span id="ratioVal">50</span>% 阳</span>
+              </label>
+              <input id="ratio" type="range" min="0" max="100" value="50" />
+              <div class="row">
+                <span class="pill" id="badgeState">平衡区</span>
+                <span class="muted" id="hintState">不是固定 50/50；平衡是一段动态区间。</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="callouts">
+            <div class="callout">
+              <div class="callout-title">四个信息层（看懂太极图）</div>
+              <ul class="list">
+                <li><b>对立</b>：黑白相对，彼此制约。</li>
+                <li><b>消长</b>：比例可变，系统在变化中求稳。</li>
+                <li><b>互根</b>：阴中有阳、阳中有阴（鱼眼）。</li>
+                <li><b>转化</b>：阴极生阳、阳极生阴（过界会反转）。</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <div class="callout-title">快捷操作</div>
+              <ul class="list">
+                <li><span class="kbd">←</span>/<span class="kbd">→</span> 调整滑块</li>
+                <li><span class="kbd">1</span>~<span class="kbd">7</span> 切换页面</li>
+                <li><span class="kbd">?</span> 打开帮助</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>关系速记</h2>
+            <div class="muted">把阴阳当作“运行规则”，不是一张静态标签图。</div>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="mini-title">阴阳对待</div>
+              <div class="mini-body">对立但相互依存：没有纯粹孤立的阴或阳。</div>
+            </div>
+            <div class="mini">
+              <div class="mini-title">互根互用</div>
+              <div class="mini-body">阴为阳之基；阳为阴之用。缺一就失去意义。</div>
+            </div>
+            <div class="mini">
+              <div class="mini-title">消长平衡</div>
+              <div class="mini-body">此消彼长，动态调整；平衡是“区间”，不是“点”。</div>
+            </div>
+            <div class="mini">
+              <div class="mini-title">转化</div>
+              <div class="mini-body">到极端会发生反转：阴极生阳、阳极生阴。</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">你在这里学到什么？</h3>
+          <ol class="list">
+            <li>如何用“比例”理解阴阳，而不是背概念。</li>
+            <li>如何用“分层”避免一句话把人搞糊涂。</li>
+            <li>四种失衡（阴盛/阳盛/阴虚/阳虚）的差别。</li>
+            <li>为什么会有“看起来热其实虚”的假象。</li>
+          </ol>
+
+          <div class="note">
+            <b>提示：</b>本 App 为学习/科普用途，不提供医疗诊断或处方建议。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-layers" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>分层拆解：同一事物可再分阴阳</h2>
+            <div class="muted">选择一个维度，观察“同一对象”的阴面与阳面如何同时成立。</div>
+          </div>
+
+          <div class="row gap">
+            <label class="field">
+              <span class="field-label">拆解维度</span>
+              <select id="layerDim">
+                <option value="surface">表 / 里</option>
+                <option value="motion">动 / 静</option>
+                <option value="substance">物质 / 功能</option>
+                <option value="updown">上 / 下</option>
+                <option value="temp">寒 / 热</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">对象</span>
+              <select id="layerObj">
+                <option value="bodyState">人体状态（抽象）</option>
+                <option value="dayNight">昼夜</option>
+                <option value="weather">天气</option>
+                <option value="emotion">情绪/行为</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="layerCards" class="layer-cards" aria-live="polite"></div>
+
+          <div class="note">
+            <b>要点：</b>阴阳是<strong>相对</strong>的。换一个参照维度，阴阳划分就会改变；同一时刻也可能出现“上热下寒”等分层矛盾。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>常见分层例子（速查）</h2>
+            <div class="muted">点一下就能把“阴阳不是二选一”刻进脑子。</div>
+          </div>
+
+          <div class="chips" id="layerExamples"></div>
+          <div class="divider"></div>
+          <div id="layerExampleDetail" class="detail muted">选择一个例子查看解释。</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-imbalance" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>四种基本失衡：盛 vs 虚</h2>
+            <div class="muted">“盛”是多了；“虚”是少了。别混。</div>
+          </div>
+
+          <div class="chips" id="imbalanceChips"></div>
+          <div id="imbalancePanel" class="panel" aria-live="polite"></div>
+
+          <div class="note">
+            <b>学习提示：</b>先判断“盛/虚”，再考虑“寒热/动静/表里”等分层；不要只盯表象词。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>快速对照表</h2>
+            <div class="muted">记忆用，背完就丢，关键是理解机制。</div>
+          </div>
+
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>类型</th>
+                <th>一句话机制</th>
+                <th>最容易误判点</th>
+              </tr>
+            </thead>
+            <tbody id="imbalanceTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-transform" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>转化模拟：极则反</h2>
+            <div class="muted">用阈值理解“为什么会反转”，而不是当口号。</div>
+          </div>
+
+          <div class="row gap">
+            <label class="field">
+              <span class="field-label">起始状态</span>
+              <select id="simStart">
+                <option value="yangUp">阳渐增（推进）</option>
+                <option value="yinUp">阴渐增（凝聚）</option>
+                <option value="swing">来回摆动（消长）</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">阈值</span>
+              <input id="simTh" type="range" min="60" max="95" value="85" />
+              <span class="mono" id="simThVal">85</span>
+            </label>
+            <button id="btnSim" class="btn">开始/暂停</button>
+            <button id="btnReset" class="btn ghost">重置</button>
+          </div>
+
+          <div class="meter">
+            <div class="meter-bar" id="meterBar" style="width:50%"></div>
+            <div class="meter-th" id="meterTh" style="left:85%"></div>
+          </div>
+
+          <div class="row">
+            <span class="pill" id="simState">平衡区</span>
+            <span class="muted" id="simText">当阳推到“极端阈值”时，会提示转化（阳极生阴）。</span>
+          </div>
+
+          <div class="divider"></div>
+          <h3 class="h3">你能从模拟里看到：</h3>
+          <ul class="list">
+            <li>“极”不是“盛/虚”的同义词，它更像<strong>失控边界</strong>。</li>
+            <li>反转不是魔法，而是系统为恢复稳定做出的<strong>结构性调整</strong>。</li>
+            <li>“动态平衡”意味着允许波动，但不允许无限偏离。</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>转化四句（可背可不背）</h2>
+            <div class="muted">写得很直白，避免玄学腔。</div>
+          </div>
+
+          <div class="quote">
+            <p><b>阴中有阳</b>：再静也有潜在的动。</p>
+            <p><b>阳中有阴</b>：再动也有承载与限制。</p>
+            <p><b>阴极生阳</b>：压到极端会反弹出推动力。</p>
+            <p><b>阳极生阴</b>：冲到极端会转向收敛与制约。</p>
+          </div>
+
+          <div class="note">
+            <b>说明：</b>这些话是“理解模板”，不是诊断结论。现实系统通常是多因素叠加。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-illusions" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>真假判断训练（高级）</h2>
+            <div class="muted">给你“表面信息”，你选本质状态。重点是避免被表象骗。</div>
+          </div>
+
+          <div class="row gap">
+            <button id="btnNewCase" class="btn">换一题</button>
+            <label class="field">
+              <span class="field-label">难度</span>
+              <select id="caseLevel">
+                <option value="easy">基础</option>
+                <option value="mid" selected>进阶</option>
+                <option value="hard">混合</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="caseBox" class="casebox" aria-live="polite"></div>
+          <div class="chips" id="caseOptions"></div>
+
+          <div id="caseResult" class="result"></div>
+
+          <div class="note">
+            <b>重要：</b>题目是教学化的“模型案例”，目的是训练思路：先辨表里、再辨虚实、再看寒热与转化。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>常见假象速查</h2>
+            <div class="muted">这一页做得好，你的 App 立刻比普通科普高一档。</div>
+          </div>
+
+          <div class="accordion" id="illusAccordion"></div>
+
+          <div class="divider"></div>
+          <div class="detail muted">
+            记住一句：<b>先问“本质是什么”，再看“表面像什么”。</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-glossary" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>术语词典</h2>
+            <div class="muted">支持搜索；中英切换。</div>
+          </div>
+
+          <div class="row gap">
+            <input id="q" class="search" placeholder="搜索：如 阴虚 / 消长 / 真寒假热 ..." />
+            <button id="btnClear" class="btn ghost">清空</button>
+          </div>
+
+          <div id="glossaryList" class="glossary" aria-live="polite"></div>
+        </div>
+
+        <div class="card" id="about">
+          <div class="card-hd">
+            <h2>About & 部署</h2>
+            <div class="muted">静态站点：GitHub → Vercel 直接部署。</div>
+          </div>
+
+          <h3 class="h3">部署到 Vercel</h3>
+          <ol class="list">
+            <li>把本项目文件放到 GitHub 仓库根目录（包含 <span class="mono">index.html</span>）。</li>
+            <li>Vercel → Import Project → 选择仓库。</li>
+            <li>Framework 选 <b>Other</b>；Build Command 留空；直接 Deploy。</li>
+          </ol>
+
+          <h3 class="h3">免责声明</h3>
+          <p class="muted">
+            本 App 用于学习与科普，展示“阴阳理论”的结构化理解方式。它不是医疗工具，不提供诊断、处方或个体化治疗建议。
+          </p>
+
+          <h3 class="h3">素材与版权</h3>
+          <p class="muted">
+            本项目的太极 SVG 为自绘（便于交互与叠加提示），不依赖外部图片素材。你也可以替换为自己有授权的图。
+          </p>
+
+          <div class="divider"></div>
+
+          <button id="btnExport" class="btn">导出当前学习状态（JSON）</button>
+          <div id="exportOut" class="export muted"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-bridge" class="view">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd">
+            <h2>阴阳 × 五行（概念联动）</h2>
+            <div class="muted">阴阳是“总规则”，五行是“分系统关系网”。这里做逻辑联动，不做处方。</div>
+          </div>
+
+          <div class="row gap">
+            <label class="field">
+              <span class="field-label">选择阴阳状态</span>
+              <select id="bridgeState">
+                <option value="balanced">相对平衡</option>
+                <option value="yangExcess">阳盛</option>
+                <option value="yinExcess">阴盛</option>
+                <option value="yangDef">阳虚</option>
+                <option value="yinDef">阴虚</option>
+              </select>
+            </label>
+            <button id="btnBridgeExplain" class="btn">解释</button>
+          </div>
+
+          <div id="bridgeBox" class="bridgebox"></div>
+
+          <div class="note">
+            <b>用法建议：</b>如果你已经有“五行 App”，可以在导航里互相跳转：本页只负责把“阴阳判断”映射到“五行关注点”的学习提示。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>对照模板（学习用句式）</h2>
+            <div class="muted">给你一套“讲给别人听”的句式，避免玄学。</div>
+          </div>
+
+          <ul class="list">
+            <li>先说<strong>分层</strong>：表/里、动/静、物质/功能。</li>
+            <li>再说<strong>虚实</strong>：是多了（盛）还是少了（虚）。</li>
+            <li>再说<strong>消长</strong>：哪个在上升，哪个在下降。</li>
+            <li>最后看<strong>转化</strong>：有没有接近极端，是否可能反转。</li>
+          </ul>
+
+          <div class="divider"></div>
+          <div class="detail muted">
+            这套模板可以当“讲义”，也可以用来写你科普 App 的解释文案。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">© 阴阳互动学习 WebApp · 静态站点 · 适合 GitHub + Vercel 部署</div>
+    </footer>
+  </main>
+
+  <dialog id="helpDlg">
+    <div class="dlg">
+      <div class="dlg-hd">
+        <div class="dlg-title">帮助</div>
+        <button class="chip" id="btnCloseHelp">关闭</button>
+      </div>
+      <div class="dlg-bd">
+        <ul class="list">
+          <li><b>页面切换：</b>点击顶部标签，或按 <span class="kbd">1</span>~<span class="kbd">7</span>。</li>
+          <li><b>滑块：</b>太极页按 <span class="kbd">←</span>/<span class="kbd">→</span> 微调。</li>
+          <li><b>真假判断：</b>先看“表里/虚实/寒热”，不要被单个表象词带跑。</li>
+          <li><b>导出：</b>About 页可导出当前学习状态（语言、上次选择等）。</li>
+        </ul>
+        <div class="note">
+          如果你要把它变成“教学 App”，建议加入：例题库扩展、课程模式、收藏/笔记、测验记录等。
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
